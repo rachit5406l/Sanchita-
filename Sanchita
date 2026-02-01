@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine ❤️</title>
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff4d6d,#ff8fa3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    width:320px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+h1{color:#ff2f68;}
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    font-size:18px;
+    margin:10px;
+    cursor:pointer;
+}
+#yes{background:#ff2f68;color:white;}
+#no{background:#444;color:white;}
+.hearts span{
+    position:fixed;
+    bottom:-20px;
+    font-size:25px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>❤️ Will you be my Valentine? ❤️</h1>
+    <p id="msg">Choose wisely 😌</p>
+    <button id="yes" onclick="yes()">YES 💖</button>
+    <button id="no" onclick="no()">NO 😈</button>
+</div>
+
+<script>
+let noCount=0;
+let reasons=[
+"Try again 😤",
+"You're testing my patience 😒",
+"No is not an option 😌",
+"Think again baby ❤️",
+"I won’t accept NO 😈",
+"Come on say YES 😍"
+];
+
+function yes(){
+    document.body.innerHTML=`
+    <div style="text-align:center;color:white;">
+        <h1>🎉 YAYYY!!! 🎉</h1>
+        <h2>You’re My Valentine ❤️</h2>
+        <p>I Love You 😘</p>
+    </div>`;
+    for(let i=0;i<40;i++){
+        let h=document.createElement("span");
+        h.innerHTML="❤️";
+        h.style.left=Math.random()*100+"vw";
+        h.style.animationDuration=(Math.random()*3+3)+"s";
+        document.body.appendChild(h);
+        h.className="hearts";
+    }
+}
+
+function no(){
+    let msg=document.getElementById("msg");
+    msg.innerText=reasons[noCount%reasons.length];
+    noCount++;
+}
+</script>
+
+</body>
+</html>
